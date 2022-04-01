@@ -141,3 +141,6 @@ dmypy.json
 cython_debug/
 
 PUBLIC.md
+out/
+out_pretrained/
+out_old/

@@ -1,0 +1,6 @@
+numpy~=1.18.5
+tqdm~=4.47.0
+pyquaternion~=0.9.5
+omegaconf~=2.1.1
+ninja
+MinkowskiEngine==0.5.4

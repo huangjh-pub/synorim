@@ -1,0 +1,24 @@
+include_configs:
+  - data_multiway.yaml
+
+model: 'full_sync'
+
+# Path to the pretrained model.
+# Weight of the descriptor network is already wrapped in the basis networks.
+basis_checkpoint: "out/dd/basis/best.pth"
+
+# Threshold for computing putative correspondences
+gpd_thres: 0.3
+
+# Number of canonical functions will be (n_basis - num_v_sub)
+num_v_sub: 2
+
+# Weight of E_cycle (Equ.14), we fix that to be 1.
+cycle_weight: 1.0
+
+# Number of synchronization iterations and convergence criteria.
+sync_iter: 20
+sync_converge_rel: 3.0e-4
+
+# How the flow should be propagated back from quantized locations to full resolution.
+flow_k: 24

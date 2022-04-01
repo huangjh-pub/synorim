@@ -1,0 +1,54 @@
+include_configs:
+  - ../common/train.yaml
+  - data_pairwise.yaml
+
+name: 'dt4d/basis'
+model: 'basis_net'
+
+batch_size: 2
+
+# Quantization size of sparse convolution network
+voxel_size: 0.01
+
+# Path to the trained descriptor network
+desc_checkpoint: "out/dt4d/desc/best.pth"
+
+# Probability of using ground-truth correspondences rather than predicted
+gt_align_prob: 0.5
+
+# Number of basis functions
+n_basis: 24
+
+# Basis network configuration
+backbone_args:
+  channels: [-1, 32, 64, 128, 256]
+  tr_channels: [-1, 64, 64, 64, 128]
+
+# Refinement network configuration
+refine_args:
+  channels: [-1, 32, 64]
+  tr_channels: [-1, 64, 64]
+
+# Consistency loss (Equ.11) weight
+ctc_weight: 0.005
+# The following losses are found to improve training stability.
+#   Empirically for a fully converged model they will NOT
+# affect performance a lot.
+flow_f_weight: 0.1        # Regularize F^f
+smoothness_weight: 5.0    # Smoothness loss L_smooth
+
+# We eliminate large F^f caused by numerical instability.
+flow_f_max_bound: 1.0
+
+# Matches count threshold when using g_pd, during training.
+n_match_th: 64
+
+# Type of robust kernel. Only huber is supported.
+robust_kernel:
+  type: "huber"
+  robust_k: 0.05
+  robust_iter: 2
+
+# t parameter in Equ.(5)
+t_init: 0.1
+t_min: 0.01

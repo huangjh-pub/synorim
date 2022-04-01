@@ -1,0 +1,21 @@
+include_configs:
+  - ../common/train.yaml
+  - data_pairwise.yaml
+
+name: 'cape/desc'
+model: 'desc_net'
+
+batch_size: 4
+
+# Quantization size of sparse convolution network
+voxel_size: 0.01
+
+# td parameter in Equ.(2)
+td_init: 1.0
+td_min: 0.02
+
+# Descriptor network configuration
+backbone_args:
+  channels: [-1, 32, 96, 64, 192]
+  tr_channels: [-1, 32, 32, 64, 96]
+  out_channels: 64

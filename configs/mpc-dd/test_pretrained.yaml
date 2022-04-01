@@ -1,0 +1,5 @@
+include_configs:
+  - data_multiway.yaml
+  - test.yaml
+
+basis_checkpoint: "out_pretrained/dd/basis/best.pth"

@@ -1,0 +1,6 @@
+# Test dataloader configuration
+test_kwargs:
+  base_folder: "../dataset/mpc-dt4d"
+  split: "meta:test"
+  random_seed: "fixed"
+  sub_frames: [[0, 1, 2, 3]]
