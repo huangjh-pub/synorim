@@ -189,7 +189,7 @@ class Model(BaseModel):
         """
         Propagate from flows at the sub-sampled positions to the input resolution.
         """
-        eval_pairs = list(batch[DS.FULL_FLOW].keys())
+        eval_pairs = list(sub_flows.keys())
         output_full_flow = {}
 
         for (view_i, view_j) in eval_pairs:

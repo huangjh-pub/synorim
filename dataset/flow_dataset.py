@@ -157,6 +157,11 @@ class FlowDataset(RandomSafeDataset):
                 for fjdx, view_j in enumerate(view_sel_idx):
                     if view_i == view_j:
                         continue
+                    if 'flows' not in datum.keys():
+                        full_flows[(fidx, fjdx)] = np.zeros(
+                            (ret_vals[DatasetSpec.FULL_FLOW][(fidx, fjdx)].shape[0], 3), dtype=np.float32)
+                        has_valid_flow = True
+                        continue
                     cur_flow = datum['flows'][view_i][view_j]
                     if cur_flow is None:
                         final_flows = None
