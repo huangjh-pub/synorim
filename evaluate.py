@@ -4,7 +4,41 @@ import importlib
 import argparse
 from pathlib import Path
 from utils import exp
+import numpy as np
 from tqdm import tqdm
+from dataset.base import DatasetSpec
+
+
+def visualize(test_result, data):
+    try:
+        import open3d as o3d
+    except ImportError:
+        print("Please import open3d for visualization!")
+        exit()
+
+    for (view_i, view_j) in test_result.keys():
+        pc_i = data[DatasetSpec.PC][view_i][0].cpu().numpy()
+        pc_j = data[DatasetSpec.PC][view_j][0].cpu().numpy()
+        flow_ij = test_result[(view_i, view_j)].cpu().numpy()
+
+        base_pcd = o3d.geometry.PointCloud()
+        base_pcd.points = o3d.utility.Vector3dVector(pc_i)
+        base_pcd.paint_uniform_color((1.0, 0., 0.))
+
+        final_pcd = o3d.geometry.PointCloud()
+        final_pcd.points = o3d.utility.Vector3dVector(pc_i + flow_ij)
+        final_pcd.paint_uniform_color((0., 1.0, 0.))
+
+        dest_pcd = o3d.geometry.PointCloud()
+        dest_pcd.points = o3d.utility.Vector3dVector(pc_j)
+        dest_pcd.paint_uniform_color((0., 0., 1.0))
+
+        corres_lineset = o3d.geometry.LineSet(
+            points=o3d.utility.Vector3dVector(np.vstack([pc_i, pc_i + flow_ij])),
+            lines=o3d.utility.Vector2iVector(np.arange(2 * flow_ij.shape[0]).reshape((2, -1)).T))
+
+        print(f"Visualizing scene flow computed from view {view_i} to view {view_j}.")
+        o3d.visualization.draw([base_pcd, final_pcd, dest_pcd, corres_lineset])
 
 
 def test_epoch():
@@ -18,6 +52,9 @@ def test_epoch():
         with torch.no_grad():
             test_result, test_metric = net_model.test_step(data, batch_idx)
 
+        if args.visualize:
+            visualize(test_result, data)
+
         meter.append_loss(test_metric)
 
     return meter
@@ -27,6 +64,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Synorim Evaluation script')
     parser.add_argument('config', type=str, help='Path to the config file.')
     parser.add_argument('--device', type=str, choices=['cpu', 'cuda'], default='cuda', help='Device to run on.')
+    parser.add_argument('--visualize', action='store_true', help='Whether or not to visualize.')
     args = parser.parse_args()
 
     exp.seed_everything(0)
