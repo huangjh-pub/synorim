@@ -24,3 +24,4 @@ download_model cape 1FMgXeM8zX448j8zQulfm0Zy0aHfblRPJ
 download_model dt4d 1vs9rOfGeXOXk6Q4gGfkDR3ziCV_XvKYT
 download_model dd 1ezvt-MoW0AIMHiJj8j9RZFu2PQWPqaLw
 download_model sapien 1mmJDrVsDbUd1wjazDKGpeF0tUrpYtUDu
+download_model cape_self 11ohjDuFkujYDDrI-XD8YP22DSO2cd5Au

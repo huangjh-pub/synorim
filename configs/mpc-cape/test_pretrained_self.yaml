@@ -1,0 +1,5 @@
+include_configs:
+  - data_multiway.yaml
+  - test_self.yaml
+
+basis_checkpoint: "out_pretrained/cape_self/basis/best.pth"
