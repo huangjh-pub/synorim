@@ -111,3 +111,6 @@ python evaluate.py configs/<DATASET-NAME>/test.yaml
 ```
 *Note*: after the basis training phase is completed, the weights in the descriptor network are included in the basis checkpoint. However the config file for the descriptor network is still needed to recover meta-data. 
 
+## Other implementations
+
+- [Synorim Jittor](https://github.com/heiwang1997/synorim-jittor): Jittor implementation.
