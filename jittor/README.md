@@ -46,7 +46,7 @@ The jittor framework will use GPU automatically.
 
 ## Notice
 
-The jittor implementation is largely based on [Jittor PointCloudLib](https://github.com/Jittor/PointCloudLib). We use PointNet++ to replace the sparse convolution used in the original paper. We also make several method-wise simplifications to adapt to jittor. For evaluation please stick to the [original version](https://github.com/huangjh-pub/synorim).
+The jittor implementation is largely based on [Jittor PointCloudLib](https://github.com/Jittor/PointCloudLib). We use PointNet++ to replace the sparse convolution used in the original paper. We also make several method-wise simplifications to adapt to jittor. For evaluation please stick to the [original version](https://github.com/huangjh-pub/synorim/tree/public).
 
 ## Citation
 
