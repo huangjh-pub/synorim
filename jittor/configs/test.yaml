@@ -1,0 +1,10 @@
+include_configs:
+  - data.yaml
+
+model: 'full_sync'
+basis_checkpoint: "out/basis/best.jt"
+gpd_thres: 0.3
+num_v_sub: 2
+cycle_weight: 1.0
+sync_iter: 20
+sync_converge_rel: 3.0e-4

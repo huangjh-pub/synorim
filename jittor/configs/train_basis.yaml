@@ -1,0 +1,39 @@
+include_configs:
+  - data.yaml
+
+name: 'basis'
+model: 'basis_net'
+
+batch_size: 2
+
+learning_rate:
+  init: 1.0e-3
+  decay_mult: 0.7
+  decay_step: 500000
+  clip: 1.0e-6
+weight_decay: 0.0
+
+# Path to the trained descriptor network
+desc_checkpoint: "out/desc/best.jt"
+
+# Probability of using ground-truth correspondences rather than predicted
+gt_align_prob: 0.5
+
+# Number of basis functions
+n_basis: 24
+
+# Consistency loss (Equ.11) weight
+ctc_weight: 0.005
+
+# Matches count threshold when using g_pd, during training.
+n_match_th: 64
+
+# Type of robust kernel. Only huber is supported.
+robust_kernel:
+  type: "huber"
+  robust_k: 0.05
+  robust_iter: 2
+
+# t parameter in Equ.(5)
+t_init: 0.1
+t_min: 0.01

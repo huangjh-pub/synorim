@@ -1,0 +1,35 @@
+# Training dataloader configuration
+train_kwargs:
+  base_folder: "../dataset/mpc-dt4d"
+  split: "meta:train"
+  sub_frames: [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
+
+train_augmentation:
+  centralize: false
+  together:
+    enabled: false
+    scale_low: 1.0
+    scale_high: 1.0
+    degree_range: 20.0
+    shift_range: 1.0
+    jitter_sigma: 0.1
+    jitter_clip: 0.1
+  pc2:
+    enabled: true
+    degree_range: 10.0
+    shift_range: 0.0
+    jitter_sigma: 0.0
+    jitter_clip: 0.0
+    dof: 'y'
+
+# Validation dataloader configuration
+val_kwargs:
+  base_folder: "../dataset/mpc-dt4d"
+  split: "meta:val"
+  sub_frames: [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3], [2, 3]]
+
+# Test dataloader configuration
+test_kwargs:
+  base_folder: "../dataset/mpc-dt4d"
+  split: "meta:test"
+  sub_frames: [[0, 1, 2, 3]]

@@ -1,0 +1,22 @@
+include_configs:
+  - data.yaml
+
+name: 'desc'
+model: 'desc_net'
+
+batch_size: 4
+
+learning_rate:
+  init: 1.0e-3
+  decay_mult: 0.7
+  decay_step: 500000
+  clip: 1.0e-6
+weight_decay: 0.0
+
+# td parameter in Equ.(2)
+td_init: 1.0
+td_min: 0.02
+
+# Descriptor network configuration
+backbone_args:
+  out_channels: 64
