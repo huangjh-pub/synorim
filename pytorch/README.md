@@ -45,7 +45,7 @@ Note: You can also choose to use our `MinkowskiEngine` fork from [here](https://
 | MPC-DD     | 1754 / 200     | 267    | [Link](https://docs.google.com/forms/d/e/1FAIpQLSeQ1hkCmmTiib-oQM9s21y3Tz9ojiI2zB8vZSqTZjT2DiRZ0g/viewform) | [Data (2.4G)](https://drive.google.com/file/d/1ykFSe9TI9kZ-RozZw874YHDiO1cLRCgc/view?usp=sharing)   [Model](https://drive.google.com/file/d/1ezvt-MoW0AIMHiJj8j9RZFu2PQWPqaLw/view?usp=sharing) | 2.54     |
 | MPC-SAPIEN | 530 / 88       | 266    | [Link](https://sapien.ucsd.edu/about#term)                   | [Data (1.3G)](https://drive.google.com/file/d/13yMOoFmUV2Ca9j0tm_CD0nd1BGx1T8Jx/view?usp=sharing)   [Model](https://drive.google.com/file/d/1mmJDrVsDbUd1wjazDKGpeF0tUrpYtUDu/view?usp=sharing) | 3.05     |
 
-We provide all the datasets used in our paper. However, **in order to download them, please accept the respective 'Term of Use' by sending the agreement form if needed**. The data are stored on Google Drive. Please use a VPN if you cannot access it directly.
+We provide all the datasets used in our paper. However, **in order to download them, please accept the respective 'Term of Use' by sending the agreement form if needed**. The data are stored on Google Drive. Please use a VPN if you cannot access it directly. For users in China you can use the mirror [here](https://cloud.tsinghua.edu.cn/d/ca41871a98eb4ee3a990/).
 
 You can also run the following script to download all datasets and automatically place them in the correct place (`../dataset`). Please make sure you have write access to that folder because it is outside of the project folder.
 
